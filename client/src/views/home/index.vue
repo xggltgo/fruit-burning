@@ -1,6 +1,6 @@
 <template>
   <div class="home-container">
-    <!-- <Carousel /> -->
+    <Carousel />
     <aboutUs />
   </div>
 </template>
