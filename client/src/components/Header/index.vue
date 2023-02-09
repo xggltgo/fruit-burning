@@ -3,7 +3,7 @@
     <div class="top-bar">
       <div class="left">
         <div class="logo">
-          <img src="../../assets/logo.png" alt="">
+          <img src="../../assets/logo.png" alt="" />
         </div>
       </div>
       <div class="right">
@@ -30,56 +30,46 @@
     </div>
     <nav class="nav">
       
-      
-      
-      
-      <!-- <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-        <el-tab-pane label="User" name="first">User</el-tab-pane>
-        <el-tab-pane label="Config" name="second">Config</el-tab-pane>
-        <el-tab-pane label="Role" name="third">Role</el-tab-pane>
-        <el-tab-pane label="Task" name="fourth">Task</el-tab-pane>
-      </el-tabs> -->
       <el-menu
         :default-active="activeIndex"
         class="el-menu-demo"
         mode="horizontal"
         :ellipsis="false"
-        @select="handleSelect"
+        :router="true"
+        style="--el-menu-text-color:#fff;"
       >
-        <el-menu-item index="0">
-          <RouterLink to="/">商城首页</RouterLink></el-menu-item
-        >
-        <el-menu-item index="1"
-          ><RouterLink to="/all">所有商品</RouterLink></el-menu-item
-        >
-        <el-menu-item index="2"
-          ><RouterLink to="/dynamic">商城动态</RouterLink></el-menu-item
-        >
-        <el-menu-item index="3"
-          ><RouterLink to="/pay">支付方式</RouterLink></el-menu-item
-        >
-        <el-menu-item index="4"
-          ><RouterLink to="/about">关于店铺</RouterLink></el-menu-item
-        >
-        <el-menu-item index="5"
-          ><RouterLink to="/offline">线下门店</RouterLink></el-menu-item
-        >
+        <el-menu-item index="/"> 商城首页</el-menu-item>
+        <el-menu-item index="/all">所有商品</el-menu-item>
+        <el-menu-item index="/dynamic">商城动态</el-menu-item>
+        <el-menu-item index="/pay">支付方式</el-menu-item>
+        <el-menu-item index="/about">关于店铺</el-menu-item>
+        <el-menu-item index="/offline">线下门店</el-menu-item>
       </el-menu>
     </nav>
   </div>
 </template>
 
 <script setup>
-import { RouterLink } from 'vue-router';
-import { ref } from 'vue';
-const input3 = ref('');
-const activeIndex = ref('1');
-const handleSelect = (key, keyPath) => {
-  console.log(key, keyPath);
-};
+import {  useRoute } from "vue-router";
+import { ref, watch } from "vue";
+
+const route = useRoute();
+const input3 = ref("");
+let activeIndex = ref("");
+// 当参数更改时获取用户信息
+watch(
+  () => route.path,
+  async (newPath) => {
+    activeIndex.value = newPath;
+  },
+  {
+    deep: true,
+  }
+);
 </script>
 
 <style lang="scss" scoped>
+@use "@/styles/var.scss" as *;
 .top-bar {
   display: flex;
   align-items: center;
@@ -105,13 +95,13 @@ const handleSelect = (key, keyPath) => {
       color: #fff;
       margin-right: 35px;
       .input-with-select {
-        border: 2px solid #1365f2;
+        border: 2px solid $base;
         :deep(.el-input__wrapper) {
           box-shadow: unset;
         }
       }
       :deep(.el-input-group__append) {
-        background: #1365f2;
+        background: $base;
         color: #fff;
         border-radius: initial;
       }
@@ -123,14 +113,16 @@ const handleSelect = (key, keyPath) => {
 }
 .nav {
   height: 59px;
-  :deep(.el-menu){
+  :deep(.el-menu) {
     padding-left: 300px;
+    background: $dark;
+    .el-menu-item {
+      &:hover,&:focus {
+        background: unset;
+        color: $base;
+        border-bottom: 2px solid $base;
+      }
+    }
   }
-}
-.demo-tabs > .el-tabs__content {
-  padding: 32px;
-  color: #6b778c;
-  font-size: 32px;
-  font-weight: 600;
 }
 </style>

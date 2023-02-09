@@ -5,10 +5,10 @@ import App from './App.vue'
 import router from './router'
 
 import './assets/main.css'
+import 'animate.css';
 
 const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
-console.log(123);
 app.mount('#app')

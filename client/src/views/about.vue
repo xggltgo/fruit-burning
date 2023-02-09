@@ -2,12 +2,8 @@
   <div class="about-container">about</div>
 </template>
 
-<script>
-export default {
+<script setup></script>
 
-}
-</script>
-
-<style>
+<style lang="scss" scoped>
 
 </style>
