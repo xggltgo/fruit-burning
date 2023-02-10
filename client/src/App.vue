@@ -1,7 +1,7 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router';
-import HelloWorld from './components/HelloWorld.vue';
-import Header from '@/components/Header/index.vue';
+import { RouterLink, RouterView } from "vue-router";
+import HelloWorld from "./components/HelloWorld.vue";
+import Header from "@/components/Header/index.vue";
 </script>
 
 <template>
@@ -18,8 +18,10 @@ import Header from '@/components/Header/index.vue';
     </div>
   </header> -->
   <!-- <RouterView /> -->
-  <Header />
-  <RouterView />
+  <div class="app-container">
+    <Header />
+    <RouterView />
+  </div>
 </template>
 
 <style scoped></style>
