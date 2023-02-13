@@ -7,17 +7,17 @@
     git config --global user.name "Your Name" #配置用户名            
     git config --global user.email "email@example.com"  #配置邮箱
     git config --list #查看配置信息
-    git config user.name 'lx01582452'
-    git config user.email 'lx01582452@alibaba-inc.com'
+    git config user.name 'Your Name'
+    git config user.email 'email@example.com'
 
 > 克隆远程仓库指定分支
 
-    git clone -b daily/3.17.0 http://gitlab.alibaba-inc.com/oss/ossnext.git
+    git clone -b 分支名 clone地址
     # -b [分支名称]
 
 > 创建并切换到指定开发分支
 
-    git checkout -b lixiang/fix/dev/45934669
+    git checkout -b 分支名
 
 > 提交工作区代码到暂存区
 
@@ -25,15 +25,15 @@
 
 > 提交暂存区代码到版本库（提交之前配置邮箱）
 
-    git commit -m 'fix: to #45934669'
+    git commit -m '附加信息'
 
 > 本地分支推送到远程仓库
 
-    git push origin lixiang/fix/dev/46289193
+    git push origin 分支名
 
 > 删除本地指定分支
 
-    git branch -D lixiang/fix/dev/46453415
+    git branch -D 分支名
 
 > 对比工作区和暂存区的文件差异
 
@@ -63,7 +63,7 @@
 
     git checkout develop #step1：从开发分支切换到主分支
     git pull #step2：拉取主分支上的最新代码
-    git checkout lixiang/fix/dev/45934669 #step3:切换回自己的开发分支
+    git checkout 分支名 #step3:切换回自己的开发分支
     git merge develop #step4：合并主分支上的代码，[处理冲突]
 
 > 切换到同事的分支报错
