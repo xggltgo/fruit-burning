@@ -1,5 +1,5 @@
 <template>
-  <div class="about-container">
+  <div class="about-us-container">
     <div class="content">
       <div class="left"></div>
       <div class="right">
@@ -9,9 +9,9 @@
     <div
       class="extra-title extra animate__animated animate__delay-1s"
       :class="{
-        animate__fadeInRight,
+        animate__fadeInRight:use_animate,
       }"
-      :style="{ visibility: animate__fadeInRight ? 'visible' : 'hidden' }"
+      :style="{ visibility: use_animate ? 'visible' : 'hidden' }"
     >
       GUO&nbsp;RAN<br />
       FRUITS
@@ -19,19 +19,19 @@
     <div
       class="extra-desc extra animate__animated animate__delay-2s"
       :class="{
-        animate__fadeInRight,
+        animate__fadeInRight:use_animate,
       }"
-      :style="{ visibility: animate__fadeInRight ? 'visible' : 'hidden' }"
+      :style="{ visibility: use_animate ? 'visible' : 'hidden' }"
     >
       在专栏设置面板中，您可以更换背景图片的<br />
       非常简单的，不需要任何别的设置
     </div>
     <button
-      class="extra-btn extra animate__animated animate__delay-3s"
+      class="extra-btn extra animate__animated animate__delay-2s"
       :class="{
-        animate__fadeInRight,
+        animate__fadeInRight:use_animate,
       }"
-      :style="{ visibility: animate__fadeInRight ? 'visible' : 'hidden' }"
+      :style="{ visibility: use_animate ? 'visible' : 'hidden' }"
     >
       查看更多详情
     </button>
@@ -41,7 +41,7 @@
 <script setup>
 import { defineProps } from "vue";
 defineProps({
-  animate__fadeInRight: {
+  use_animate: {
     type: Boolean,
     required: true,
     default: false,

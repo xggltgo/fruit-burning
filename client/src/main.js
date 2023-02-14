@@ -6,6 +6,7 @@ import router from './router'
 
 import './assets/main.css'
 import 'animate.css';
+import 'hover.css/css/hover-min.css';
 
 const app = createApp(App)
 

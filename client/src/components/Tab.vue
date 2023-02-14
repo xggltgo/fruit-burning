@@ -4,40 +4,49 @@
     <div
       class="title animate__animated"
       :class="{
-        animate__fadeInRight,
+        animate__fadeInRight:use_animate,
       }"
-      :style="{ visibility: animate__fadeInRight ? 'visible' : 'hidden' }"
+      :style="{
+        visibility: use_animate ? 'visible' : 'hidden',
+        marginBottom: `${marginBottom}px`,
+        margin: `0 ${title.margin}px`,
+      }"
     >
-      <span class="cn">{{title.cn}}</span>
-      <span class="en">{{title.en}}</span>
+      <span class="cn">{{ title.cn }}</span>
+      <span class="en">{{ title.en }}</span>
     </div>
     <!-- 内容区域 -->
-    <slot :animate__fadeInRight='animate__fadeInRight'></slot>
+    <slot :use_animate="use_animate"></slot>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, defineProps } from "vue";
+import { ref, onMounted, defineProps } from 'vue';
 
 defineProps({
   title: {
     type: Object,
     required: true,
     default: {
-      cn: "标题",
-      en: "Title",
+      cn: '标题',
+      en: 'Title',
+      margin: 0,
     },
+  },
+  marginBottom: {
+    type: Number,
+    default: 30,
   },
 });
 
 const tabRef = ref(null);
-const animate__fadeInRight = ref(false);
+const use_animate = ref(false);
 onMounted(() => {
   const tabDiv = tabRef.value;
   const timer = setInterval(() => {
     const rect = tabDiv.getBoundingClientRect();
     if (document.documentElement.clientHeight - rect.top > 100) {
-      animate__fadeInRight.value = true;
+      use_animate.value = true;
       clearInterval(timer);
     }
   }, 1000);
@@ -45,17 +54,15 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@use "@/styles/var.scss" as *;
+@use '@/styles/var.scss' as *;
 .tab-container {
   margin-top: 100px;
   position: relative;
 }
 .title {
-  margin: 0 40px;
   border-bottom: 1px solid #bababa;
   height: 39px;
   visibility: hidden;
-  margin-bottom: 30px;
   .cn {
     font-family: 微软雅黑;
     font-size: 20px;
