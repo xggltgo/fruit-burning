@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 // import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
@@ -18,36 +18,41 @@ const router = createRouter({
     //   component: () => import('../views/AboutView.vue')
     // }
     {
-      path:'/',
-      name:"home",
-      component: () => import('../views/home/index.vue')
+      path: '/',
+      name: 'home',
+      component: () => import('../views/home/index.vue'),
     },
     {
-      path:'/all',
-      name:"all",
-      component: () => import('../views/all.vue')
+      path: '/all',
+      name: 'all',
+      component: () => import('../views/all/index.vue'),
     },
     {
-      path:'/dynamic',
-      name:"dynamic",
-      component: () => import('../views/dynamic.vue')
+      path: '/dynamic',
+      name: 'dynamic',
+      component: () => import('../views/dynamic.vue'),
     },
     {
-      path:'/pay',
-      name:"pay",
-      component: () => import('../views/pay.vue')
+      path: '/pay',
+      name: 'pay',
+      component: () => import('../views/pay.vue'),
     },
     {
-      path:'/about',
-      name:"about",
-      component: () => import('../views/about.vue')
+      path: '/about',
+      name: 'about',
+      component: () => import('../views/about.vue'),
     },
     {
-      path:'/offline',
-      name:"offline",
-      component: () => import('../views/offline.vue')
-    }
-  ]
-})
+      path: '/offline',
+      name: 'offline',
+      component: () => import('../views/offline.vue'),
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/login/index.vue'),
+    },
+  ],
+});
 
-export default router
+export default router;

@@ -20,8 +20,9 @@
             </el-input>
           </div>
         </div>
-        <div class="user">
-          <IEpUser />
+        <div class="user" @click="router.push('/login')">
+          <!-- <IEpUser /> -->
+          请先登录
         </div>
         <div class="cart">
           <IEpShoppingCartFull />
@@ -29,14 +30,13 @@
       </div>
     </div>
     <nav class="nav">
-      
       <el-menu
         :default-active="activeIndex"
         class="el-menu-demo"
         mode="horizontal"
         :ellipsis="false"
         :router="true"
-        style="--el-menu-text-color:#fff;"
+        style="--el-menu-text-color: #fff"
       >
         <el-menu-item index="/"> 商城首页</el-menu-item>
         <el-menu-item index="/all">所有商品</el-menu-item>
@@ -50,12 +50,13 @@
 </template>
 
 <script setup>
-import {  useRoute } from "vue-router";
-import { ref, watch } from "vue";
+import { useRoute, useRouter } from 'vue-router';
+import { ref, watch } from 'vue';
 
 const route = useRoute();
-const input3 = ref("");
-let activeIndex = ref("");
+const router = useRouter();
+const input3 = ref('');
+let activeIndex = ref('');
 // 当参数更改时获取用户信息
 watch(
   () => route.path,
@@ -69,7 +70,7 @@ watch(
 </script>
 
 <style lang="scss" scoped>
-@use "@/styles/var.scss" as *;
+@use '@/styles/var.scss' as *;
 .top-bar {
   display: flex;
   align-items: center;
@@ -108,6 +109,7 @@ watch(
     }
     .user {
       margin-right: 35px;
+      cursor: pointer;
     }
   }
 }
@@ -117,7 +119,8 @@ watch(
     padding-left: 300px;
     background: $dark;
     .el-menu-item {
-      &:hover,&:focus {
+      &:hover,
+      &:focus {
         background: unset;
         color: $base;
         border-bottom: 2px solid $base;

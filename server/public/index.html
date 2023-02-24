@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>文件上传</h1>
+    <input type="file" />
+    <button>点击上传</button>
+    <script>
+      const btn = document.querySelector('button');
+      btn.onclick = upload;
+      function upload() {
+        const fileInput = document.querySelector('input');
+        const formdata = new FormData(); // 利用它来构建form-data格式的消息体
+        formdata.append('file', fileInput.files[0], fileInput.files[0].name);
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          console.log(e.target.result); // 本地base64 预览图片
+        };
+        const base64 = reader.readAsDataURL(fileInput.files[0]);
+        // fetch('/api/upload', {
+        //   method: 'POST',
+        //   headers: {
+        //     Authorization:
+        //       'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs',
+        //   },
+        //   body: formdata,
+        // })
+        //   .then((response) => response.json())
+        //   .then((result) => console.log(result));
+      }
+    </script>
+  </body>
+</html>
