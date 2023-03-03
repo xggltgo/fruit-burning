@@ -1,6 +1,6 @@
 <template>
   <div class="order-container">
-    <div class="nav">
+    <div class="nav" v-if="orderList.length">
       <el-tabs v-model="activeName" class="demo-tabs">
         <el-tab-pane :label="`全部（${orderList.length}）`" name="all">
           <OrderList :orderList="orderList" />
@@ -28,6 +28,7 @@
         </el-tab-pane>
       </el-tabs>
     </div>
+    <el-empty description="暂无订单" v-if="orderList.length === 0" />
   </div>
 </template>
 
@@ -61,10 +62,17 @@ const doneOrderList = computed(() => {
 </script>
 
 <style lang="scss" scoped>
+.order-container {
+  width: 100%;
+}
 .demo-tabs > .el-tabs__content {
   padding: 32px;
   color: #6b778c;
   font-size: 32px;
   font-weight: 600;
+}
+
+:deep(.el-empty) {
+  margin: 0 auto;
 }
 </style>

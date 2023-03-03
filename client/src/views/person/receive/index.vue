@@ -1,6 +1,6 @@
 <template>
   <div class="receive-container">
-    <el-collapse v-model="activeNames">
+    <el-collapse v-model="activeNames" v-if="receiveStore.receiveList?.length">
       <el-collapse-item
         :name="item.id"
         v-for="item in receiveStore.receiveList"
@@ -42,6 +42,8 @@
         </div>
       </el-collapse-item>
     </el-collapse>
+
+    <el-empty description="暂无收货信息" v-if="receiveStore.receiveList.length === 0" />
 
     <div class="btn">
       <el-button type="primary" @click="handleAdd">添加收货地址</el-button>
@@ -204,7 +206,7 @@ const handleChoose = async (receiveid) => {
     receiveid,
   });
   // 通知父组件修改完成
-  emit('receiveDone',result.receiveid)
+  emit('receiveDone', result.receiveid);
 };
 </script>
 
@@ -248,5 +250,9 @@ const handleChoose = async (receiveid) => {
 
 .btn {
   margin-top: 30px;
+}
+
+:deep(.el-collapse){
+  width: 250px;
 }
 </style>
