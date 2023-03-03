@@ -1,17 +1,17 @@
 <template>
   <div class="login-container">
     <el-dialog
-      v-model="dialogVisible"
+      v-model="props.modelValue"
       title="GUORAN(登录/注册)"
       width="30%"
       :before-close="handleClose"
     >
-      <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
+      <el-tabs v-model="activeName" class="demo-tabs" type="border-card">
         <el-tab-pane label="登录" name="first">
-          <LoginForm />
+          <LoginForm @close="emit('update:modelValue', false)" />
         </el-tab-pane>
         <el-tab-pane label="注册" name="second">
-          <RegisterForm />
+          <RegisterForm @toggleLogin="handleToggleLogin" />
         </el-tab-pane>
       </el-tabs>
     </el-dialog>
@@ -19,20 +19,29 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref } from 'vue';
 import LoginForm from './LoginForm.vue';
 import RegisterForm from './RegisterForm.vue';
 
+const props = defineProps({
+  modelValue: {
+    type: Boolean,
+    required: true,
+  },
+});
+
+const emit = defineEmits();
+
 const activeName = ref('first');
 
-const handleClick = (tab, event) => {
-  console.log(tab, event);
+const handleClose = (done) => {
+  emit('update:modelValue', false);
+  done();
 };
 
-const dialogVisible = ref(true);
-
-const handleClose = (done) => {
-  done();
+// 用户注册成功 切换到登录表单
+const handleToggleLogin = () => {
+  activeName.value = 'first';
 };
 </script>
 

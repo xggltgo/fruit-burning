@@ -9,7 +9,11 @@ const Product = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // 普通(-1) or 热销(0) or 新品(1)
+    // 商品描述
+    description: {
+      type: DataTypes.STRING,
+    },
+    // 普通(0) or 热销(1) or 新品(2)
     status: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -38,6 +42,11 @@ const Product = sequelize.define(
     // 商品库存
     stock: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    // 商品上架时间
+    createDate: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
   },

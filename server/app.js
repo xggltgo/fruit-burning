@@ -25,6 +25,9 @@ var userRouter = require('./routes/user');
 var uploadRouter = require('./routes/upload');
 var categoryRouter = require('./routes/category');
 var productRouter = require('./routes/product');
+var cartRouter = require('./routes/cart');
+var ReceiveRouter = require('./routes/receive');
+var orderRouter = require('./routes/order');
 
 var app = express();
 
@@ -54,6 +57,7 @@ app.use(
       '/api/user/login',
       '/api/category',
       '/api/product',
+      '/api/user',
       { url: /^\/api\/category\/\d+$/, method: 'GET' },
       { url: /^\/api\/product\/\d+$/, method: 'GET' },
     ],
@@ -67,6 +71,9 @@ app.use('/res/captcha', captchaRouter);
 app.use('/api/upload', uploadRouter);
 app.use('/api/category', categoryRouter);
 app.use('/api/product', productRouter);
+app.use('/api/cart', cartRouter);
+app.use('/api/receive', ReceiveRouter);
+app.use('/api/order', orderRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

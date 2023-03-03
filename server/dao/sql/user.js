@@ -31,10 +31,18 @@ async function loginDao({ loginId, loginPwd }) {
   return user;
 }
 
+/**
+ * 根据账号查询用户信息
+ * @param {String} loginId 账号
+ * @returns
+ */
 async function selectUserByLoginId(loginId) {
   const user = await User.findOne({
     where: {
       loginId,
+    },
+    attributes: {
+      exclude: ['loginPwd'],
     },
   });
   if (user) {
@@ -56,9 +64,30 @@ async function updateUser(newUserInfo) {
   return result;
 }
 
+/**
+ * 更新用户的cartCount
+ * @param {Number} id 用户id
+ * @param {Number} val 新的cartCount值
+ */
+async function updateUserCartCount(id, val) {
+  const { cartCount } = await User.findByPk(id);
+  const result = await User.update(
+    {
+      cartCount: cartCount + val,
+    },
+    {
+      where: {
+        id,
+      },
+    }
+  );
+  return result;
+}
+
 module.exports = {
   insertUser,
   loginDao,
   updateUser,
   selectUserByLoginId,
+  updateUserCartCount,
 };

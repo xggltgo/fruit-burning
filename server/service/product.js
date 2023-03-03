@@ -11,7 +11,10 @@ const { updateCategoryCount } = require('../dao/sql/category');
 async function addProduct(productInfo) {
   // 对应分类 count 数量+1
   await updateCategoryCount(productInfo.categoryid, 1);
-  return await createProduct(productInfo);
+  return await createProduct({
+    ...productInfo,
+    createDate: Date.now(),
+  });
 }
 
 // 删除商品
@@ -39,8 +42,8 @@ async function getOneProduct(id) {
 }
 
 // 分页获取商品
-async function getProductByPage(info) {
-  const { count, rows } = await selectProductByPage(info);
+async function getProductByPage(pageInfo) {
+  const { count, rows } = await selectProductByPage(pageInfo);
   return {
     total: count,
     productList: rows,

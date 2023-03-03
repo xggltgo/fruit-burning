@@ -7,9 +7,7 @@
       }"
       :style="{ visibility: use_animate ? 'visible' : 'hidden' }"
     >
-      <Tip />
-      <div style="height: 20px"></div>
-      <Tip />
+      <Tip v-for="item in newSellList" :key="item.id" :productInfo="item" />
     </div>
     <div
       class="image animate__animated animate__delay-0.8s"
@@ -24,8 +22,10 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import Tip from '@/components/Tip.vue';
-import { defineProps } from 'vue';
+import { getProductByPage } from '@/api/product';
+
 defineProps({
   use_animate: {
     type: Boolean,
@@ -33,6 +33,19 @@ defineProps({
     default: false,
   },
 });
+
+// 新品商品列表
+const newSellList = ref([]);
+
+// 获取2个新品
+(async () => {
+  const result = await getProductByPage({
+    page: 1,
+    limit: 2,
+    status: 2,
+  });
+  newSellList.value = result.productList;
+})();
 </script>
 
 <style lang="scss" scoped>

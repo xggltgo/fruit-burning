@@ -4,15 +4,17 @@
     :class="{ animate__fadeInUp: use_animate }"
     :style="{ visibility: use_animate ? 'visible' : 'hidden' }"
   >
-    <template v-for="item in 8" key="item">
-      <Hot />
-    </template>
+    <div class="list-item" v-for="item in hotSellList" :key="item.id">
+      <Hot :productInfo="item" />
+    </div>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import Hot from '@/components/Hot.vue';
-import { defineProps } from 'vue';
+import { getProductByPage } from '@/api/product';
+
 defineProps({
   use_animate: {
     type: Boolean,
@@ -20,16 +22,28 @@ defineProps({
     default: false,
   },
 });
+
+// 热销商品列表
+const hotSellList = ref([]);
+
+// 获取8个热销商品
+(async () => {
+  const result = await getProductByPage({
+    page: 1,
+    limit: 8,
+    status: 1,
+  });
+  hotSellList.value = result.productList;
+})();
 </script>
 
 <style lang="scss" scoped>
 .hot-sell-container {
-  // display: grid;
-  // grid-template-columns: repeat(4, 1fr);
-  // justify-content: center;
-  // gap: 30px 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+.list-item {
+  width: 280px;
 }
 </style>

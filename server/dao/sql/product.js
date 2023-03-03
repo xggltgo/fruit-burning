@@ -1,5 +1,6 @@
 const Product = require('../model/product');
 const Category = require('../model/category');
+const { Op } = require('sequelize');
 
 /**
  * 添加一个商品到数据库
@@ -62,17 +63,24 @@ async function selectProductByPage({
   limit = 20,
   categoryid = -1,
   keyword = '',
+  status,
 }) {
   const where = {};
   if (+categoryid !== -1) {
     where.categoryid = categoryid;
   }
+  if (+status) {
+    where.status = +status;
+  }
+  const searchConfig = keyword ? { name: { [Op.like]: `%${keyword}%` } } : {};
   const result = await Product.findAndCountAll({
-    where,
+    where: {
+      ...where,
+      ...searchConfig,
+    },
     offset: (+page - 1) * +limit,
     limit: +limit,
   });
-
 
   return JSON.parse(JSON.stringify(result));
 }

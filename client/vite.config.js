@@ -1,17 +1,29 @@
-import path from "path";
-import { defineConfig } from "vite";
-import AutoImport from "unplugin-auto-import/vite";
-import Components from "unplugin-vue-components/vite";
-import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
-import Icons from "unplugin-icons/vite";
-import IconsResolver from "unplugin-icons/resolver";
-import vue from "@vitejs/plugin-vue";
+import path from 'path';
+import { defineConfig } from 'vite';
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+import Icons from 'unplugin-icons/vite';
+import IconsResolver from 'unplugin-icons/resolver';
+import vue from '@vitejs/plugin-vue';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      },
+      '/static': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      },
+    },
+  },
   resolve: {
     alias: {
-      "@": `${path.resolve(__dirname, "src")}/`,
+      '@': `${path.resolve(__dirname, 'src')}/`,
     },
   },
   css: {
@@ -27,7 +39,7 @@ export default defineConfig({
       resolvers: [
         ElementPlusResolver(),
         IconsResolver({
-          prefix: "Icon",
+          prefix: 'Icon',
         }),
       ],
     }),
@@ -35,10 +47,10 @@ export default defineConfig({
       resolvers: [
         ElementPlusResolver({
           // 自动引入修改主题色添加这一行，使用预处理样式
-          importStyle: "sass",
+          importStyle: 'sass',
         }),
         IconsResolver({
-          enabledCollections: ["ep"],
+          enabledCollections: ['ep'],
         }),
       ],
     }),

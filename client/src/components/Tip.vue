@@ -1,20 +1,53 @@
 <template>
-  <div class="tip-container">
-    <div class="image">
-      <img src="../assets/new.png" alt="" />
+  <div class="tip-container hvr-float-shadow">
+    <div
+      class="image"
+      @click="
+        router.push({
+          name: 'productDetail',
+          params: {
+            id: productInfo.id,
+          },
+        })
+      "
+    >
+      <img :src="productInfo.image_mid" alt="" />
     </div>
     <div class="content">
-      <div class="title">绿色又好吃的葡萄</div>
-      <div class="time">上新时间：2023-02-10</div>
+      <div
+        class="title"
+        @click="
+          router.push({
+            name: 'productDetail',
+            params: {
+              id: productInfo.id,
+            },
+          })
+        "
+      >
+        {{ productInfo.name }}
+      </div>
+      <div class="time">上新时间：{{ formatDate(productInfo.createDate) }}</div>
       <div class="desc">
-        秋天的拉萨，天气比较干燥，这个时候在家里养一些可以制造氧气和水分的植物大有好处。记者走访多个花店后发现，很多店老板都会同时提到一种制氧植物——红豆杉。红豆杉有“植物增氧机”之称...
+        {{ productInfo.description }}
       </div>
     </div>
   </div>
 </template>
 
-<script>
-export default {};
+<script setup>
+import { useRouter } from 'vue-router';
+import { formatDate } from '@/utils/tools';
+
+const router = useRouter();
+
+defineProps({
+  productInfo: {
+    type: Object,
+    required: true,
+    default: () => {},
+  },
+});
 </script>
 
 <style lang="scss" scoped>
@@ -24,6 +57,7 @@ export default {};
   border: 1px solid rgba(221, 221, 221);
   padding: 5px;
   display: flex;
+  margin-bottom: 20px;
   .image {
     width: 280px;
     height: 200px;
@@ -59,7 +93,12 @@ export default {};
       color: #777777;
       font-size: 13px;
       font-family: 微软雅黑;
-      line-height: 22px;
+      height: 75px;
+      line-height: 25px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
     }
   }
 }

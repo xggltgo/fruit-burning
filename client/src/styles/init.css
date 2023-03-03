@@ -1,0 +1,10 @@
+/* 定制 element-plus 中的一些样式 */
+
+.el-notification__closeBtn {
+  top: 5px !important;
+  right: 0 !important;
+}
+
+.el-notification__group{
+  flex-grow: 1;
+}

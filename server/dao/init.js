@@ -4,6 +4,10 @@ const Admin = require('./model/admin');
 const User = require('./model/user');
 const Category = require('./model/category');
 const Product = require('./model/product');
+const Cart = require('./model/cart');
+const Order = require('./model/order');
+const Receive = require('./model/receive');
+const OrderDetail = require('./model/orderDetail');
 const { addAdmin } = require('./sql/admin');
 
 (async () => {
@@ -30,5 +34,55 @@ function connect() {
   });
   Product.belongsTo(Category, {
     foreignKey: 'categoryid',
+  });
+
+  // 购物车与用户之间的一对一关系
+  User.hasOne(Cart, {
+    foreignKey: 'userid',
+  });
+  Cart.belongsTo(Cart, {
+    foreignKey: 'userid',
+  });
+
+  // 商品与购物车之间的 多对多关系
+  Product.hasMany(Cart, {
+    foreignKey: 'productid',
+  });
+  Cart.belongsTo(Product, {
+    foreignKey: 'productid',
+  });
+
+  // Product.belongsToMany(Cart, { through: 'cartDetail' });
+  // Cart.belongsToMany(Product, { through: 'cartDetail' });
+
+  // 用户与订单的 一对多关系
+  User.hasMany(Order, {
+    foreignKey: 'userid',
+  });
+  Order.belongsTo(User, {
+    foreignKey: 'userid',
+  });
+
+  // 商品与订单的 多对多关系
+  Product.belongsToMany(Order, {
+    through: OrderDetail,
+    foreignKey: 'productid',
+  });
+  Order.belongsToMany(Product, { through: OrderDetail, foreignKey: 'orderid' });
+
+  // 订单与收货信息之间的 一对一关系
+  Receive.hasOne(Order, {
+    foreignKey: 'receiveid',
+  });
+  Order.belongsTo(Receive, {
+    foreignKey: 'receiveid',
+  });
+
+  // 用户与收货信息之间的 一对多关系
+  User.hasMany(Receive, {
+    foreignKey: 'userid',
+  });
+  Receive.belongsTo(User, {
+    foreignKey: 'userid',
   });
 }

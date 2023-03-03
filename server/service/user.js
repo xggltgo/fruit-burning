@@ -12,11 +12,8 @@ const {
  */
 async function register(userInfo) {
   const user = await insertUser(userInfo);
-  return {
-    id: user.id,
-    nickname: user.nickname,
-    loginId: user.loginId,
-  };
+  const { loginPwd, ...rest } = user;
+  return rest;
 }
 
 /**
@@ -35,6 +32,7 @@ async function login(userInfo) {
       loginId: user.loginId,
       phone: user.phone,
       avatar: user.avatar,
+      cartCount: user.cartCount,
     };
     // 生成 token
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
@@ -63,8 +61,13 @@ async function update(newUserInfo) {
   return result;
 }
 
+async function getUserByLoginId(loginId) {
+  return await selectUserByLoginId(loginId);
+}
+
 module.exports = {
   register,
   login,
   update,
+  getUserByLoginId,
 };

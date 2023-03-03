@@ -9,7 +9,7 @@
     <div
       class="extra-title extra animate__animated animate__delay-1s"
       :class="{
-        animate__fadeInRight:use_animate,
+        animate__fadeInRight: use_animate,
       }"
       :style="{ visibility: use_animate ? 'visible' : 'hidden' }"
     >
@@ -19,7 +19,7 @@
     <div
       class="extra-desc extra animate__animated animate__delay-2s"
       :class="{
-        animate__fadeInRight:use_animate,
+        animate__fadeInRight: use_animate,
       }"
       :style="{ visibility: use_animate ? 'visible' : 'hidden' }"
     >
@@ -29,9 +29,10 @@
     <button
       class="extra-btn extra animate__animated animate__delay-2s"
       :class="{
-        animate__fadeInRight:use_animate,
+        animate__fadeInRight: use_animate,
       }"
       :style="{ visibility: use_animate ? 'visible' : 'hidden' }"
+      @click="router.push({ name: 'about' })"
     >
       查看更多详情
     </button>
@@ -39,7 +40,8 @@
 </template>
 
 <script setup>
-import { defineProps } from "vue";
+import { useRouter } from 'vue-router';
+const router = useRouter();
 defineProps({
   use_animate: {
     type: Boolean,
@@ -50,7 +52,7 @@ defineProps({
 </script>
 
 <style lang="scss" scoped>
-@use "@/styles/var.scss" as *;
+@use '@/styles/var.scss' as *;
 .content {
   height: 600px;
   display: flex;

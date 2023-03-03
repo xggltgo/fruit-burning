@@ -25,6 +25,11 @@ const User = sequelize.define(
       allowNull: false,
       defaultValue: '/static/avatar/default.png',
     },
+    cartCount: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+    },
   },
   {
     // 这是其他模型参数
