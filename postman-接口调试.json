@@ -1,0 +1,1088 @@
+{
+	"info": {
+		"_postman_id": "a7a6a6b7-9899-46d2-a18c-d7efd1202134",
+		"name": "fruit-burning",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21091759"
+	},
+	"item": [
+		{
+			"name": "管理员",
+			"item": [
+				{
+					"name": "登录",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"loginId\": \"admin1\",\r\n  \"loginPwd\": \"654321\",\r\n  \"captcha\": \"fzgrop\", \r\n  \"remember\": 7 \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "恢复登录状态",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IueuoeeQhuWRmCIsImxvZ2luSWQiOiJhZG1pbiIsImlhdCI6MTY3NzAzNzgxMiwiZXhwIjoxNjc3NjQyNjEyfQ._sTYDCwdgN5LmV2M1Rugj9szYZ0hQcpi3YzngFt-1_o",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/admin/whoami",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"whoami"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改管理员信息",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IueuoeeQhuWRmCIsImxvZ2luSWQiOiJhZG1pbiIsImlhdCI6MTY3NzAzNzgxMiwiZXhwIjoxNjc3NjQyNjEyfQ._sTYDCwdgN5LmV2M1Rugj9szYZ0hQcpi3YzngFt-1_o",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"超级管理员\",\r\n  \"loginId\": \"admin\",\r\n  \"loginPwd\": \"654321\",\r\n  \"oldLoginPwd\": \"654321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "验证码",
+			"item": [
+				{
+					"name": "获取验证码",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/res/captcha",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"res",
+								"captcha"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "用户",
+			"item": [
+				{
+					"name": "登录",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"loginId\": \"admin\",\r\n  \"loginPwd\": \"123123\",\r\n  \"remember\": 30\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/user/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "注册",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nickname\": \"aaab\",\r\n    \"loginId\": \"aaab\",\r\n    \"loginPwd\": \"aaab\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/user/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "恢复登录状态",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibmlja25hbWUiOiLkuaDmg6_ov4fkuoblpLQiLCJsb2dpbklkIjoiYWRtaW4yd3ciLCJwaG9uZSI6IjExMTEyMjIyMzMzIiwiYXZhdGFyIjoiL3N0YXRpYy9hdmF0YXJzL2RlZmF1bHQucG5nIiwiaWF0IjoxNjc3MTQwNjM3LCJleHAiOjE2Nzk3MzI2Mzd9.4Gfcz3IEaSvDrADkBz_LVtJMLTSH-Q9Qf_Iq7fsx7Lg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/user/whoami",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"whoami"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改用户信息",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLkuaDmg6_ov4fkuoblpLQiLCJsb2dpbklkIjoiYWRtaW4iLCJwaG9uZSI6bnVsbCwiYXZhdGFyIjoiIiwiaWF0IjoxNjc3MTQxMjMzLCJleHAiOjE2Nzk3MzMyMzN9.C2IUOCiS3UeL3YhgAho9ZdxF8eytI_YF4PIOrwHGj80",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nickname\": \"用户134\",\r\n    \"loginId\": \"admin\",\r\n    \"phone\": \"11111111111\",\r\n    \"avatar\": \"/static/avatar/default.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/user",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "判断账号是否存在",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/user?loginId=admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user"
+							],
+							"query": [
+								{
+									"key": "loginId",
+									"value": "admin"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "上传接口",
+			"item": [
+				{
+					"name": "图片上传",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Lenovo/Pictures/Camera Roll/1062817.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/upload",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "商品分类",
+			"item": [
+				{
+					"name": "添加分类",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"苹果\",\r\n  \"order\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/category",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除分类",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/category/7",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"category",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改分类",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"橘子\",\r\n  \"order\": 7\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/category/4",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"category",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取单个分类",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/category/6",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"category",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取所有分类",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/category",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"category"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "商品",
+			"item": [
+				{
+					"name": "添加商品",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"眉山苹果新2\",\r\n    \"status\": 2,\r\n    \"price\": 15,\r\n    \"image_sm\": \"/static/upload/raspberry_sm.png\",\r\n    \"image_mid\": \"/static/upload/raspberry_mid.png\",\r\n    \"image_big\": \"/static/upload/raspberry_big.png\",\r\n    \"description\": \"打算肯定不是的厉害还是卡还贷款撒谎打赏等哈善良豁斯空间的噶时光雕刻绝对不可撒v不断加快\",\r\n    \"stock\": 105,\r\n    \"categoryid\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/product",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改商品",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"成都苹果2\",\r\n    \"status\": null,\r\n    \"price\": 10,\r\n    \"image_sm\": \"image_sm_成都苹果\",\r\n    \"image_mid\": \"image_mid_成都苹果\",\r\n    \"image_big\": \"image_big_成都苹果\",\r\n    \"stock\": 1000,\r\n    \"categoryid\": 7\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/product/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"product",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除商品",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/product/7",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"product",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取单个商品",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/product/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"product",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "分页获取商品",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/product?page=1&limit=20&keyword=成都",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"product"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "categoryid",
+									"value": "9",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "keyword",
+									"value": "成都"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "购物车",
+			"item": [
+				{
+					"name": "添加商品到购物车",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userid\": 1,\r\n    \"productid\": 1,\r\n    \"checked\": 0,\r\n    \"quantity\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/cart",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "从购物车移除商品",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/cart/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"cart",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改购物车商品信息",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"checked\":0,\r\n  \t\"quantity\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/cart/5",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"cart",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "根据userid获取其购物车信息",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/cart",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "批量删除购物车商品",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ids\":[126,127]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/cart",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "订单",
+			"item": [
+				{
+					"name": "添加订单",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"payment\":300,\r\n  \"status\":1,\r\n  \"userid\":1,\r\n  \"receiveid\":2,\r\n  \"productInfo\":[{\"productid\":1,\"productCount\":2},{\"productid\":6,\"productCount\":5}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL}}/api/order",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"api",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改订单",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"status\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL}}/api/order/1",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"api",
+								"order",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除订单",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL}}/api/order/35",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"api",
+								"order",
+								"35"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取单个订单",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL}}/api/order/36",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"api",
+								"order",
+								"36"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取指定用户的所有订单",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL}}/api/order",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"api",
+								"order"
+							],
+							"query": [
+								{
+									"key": "userid",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "收货信息",
+			"item": [
+				{
+					"name": "添加收货信息",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\":\"祝瑶\",\r\n  \"phone\":\"19982638873\",\r\n  \"province\":\"四川省\",\r\n  \"city\":\"眉山市\",\r\n  \"county\":\"东坡区\",\r\n  \"detailAddress\":\"学院街108号\",\r\n  \"userid\":1,\r\n  \"isDefault\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL}}/api/receive",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"api",
+								"receive"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改收货信息",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiJ6eSIsImxvZ2luSWQiOiJhZG1pbiIsInBob25lIjoiMTk5ODI2Mzg4NzMiLCJhdmF0YXIiOiIvc3RhdGljL3VwbG9hZC94dmtzaHItMTY3NzQ4MDYzNDUyMC5qcGciLCJjYXJ0Q291bnQiOjMsImlhdCI6MTY3NzUxODUwOCwiZXhwIjoxNjgwMTEwNTA4fQ.s_A1T3suXR375_JpVL1k88SG0z1wcCADIceVpgKpc7A",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"祝瑶\",\r\n    \"phone\": \"19982638873\",\r\n    \"isDefault\": true,\r\n    \"province\": \"510000\",\r\n    \"city\": \"511400\",\r\n    \"county\": \"510107\",\r\n    \"detailAddress\": \"学院街108号\",\r\n    \"userid\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL}}/api/receive/5",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"api",
+								"receive",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除收货信息",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL}}/api/receive/1",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"api",
+								"receive",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取单个收货信息",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL}}/api/receive/5",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"api",
+								"receive",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取指定用户所有收货信息",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL}}/api/receive",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"api",
+								"receive"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
