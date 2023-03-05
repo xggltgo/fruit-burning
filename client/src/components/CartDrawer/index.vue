@@ -33,15 +33,15 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue';
-import { useRouter } from 'vue-router';
-import { ElNotification } from 'element-plus';
-import { useUserStore } from '@/store/user';
-import { useCartStore } from '@/store/cart';
-import { useReceiveStore } from '@/store/receive';
-import { updateCartInfo, deleteOneCart } from '@/api/cart';
-import { addOrder } from '@/api/order';
-import CartItem from './CartItem.vue';
+import { computed, ref } from "vue";
+import { useRouter } from "vue-router";
+import { ElNotification } from "element-plus";
+import { useUserStore } from "@/store/user";
+import { useCartStore } from "@/store/cart";
+import { useReceiveStore } from "@/store/receive";
+import { updateCartInfo, deleteOneCart } from "@/api/cart";
+import { addOrder } from "@/api/order";
+import CartItem from "./CartItem.vue";
 
 const props = defineProps({
   cartValue: {
@@ -84,7 +84,7 @@ const totalPrice = computed(() =>
 );
 
 const handleClose = (done) => {
-  emit('update:cartValue', false);
+  emit("update:cartValue", false);
   done();
 };
 
@@ -112,14 +112,28 @@ const handlePay = async () => {
     }));
   if (productInfo.length === 0) {
     ElNotification({
-      title: '温馨提示',
-      message: '您还没有选中任何商品',
-      type: 'info',
+      title: "温馨提示",
+      message: "您还没有选中任何商品",
+      type: "info",
       duration: 3000,
     });
     return;
   }
   const result = await receiveStore.getAllReceive();
+
+  if (result.length === 0) {
+    // 如果当前没有收货地址 导航到添加收货信息页面 并提示用户添加一个收货地址
+    emit("update:cartValue", false);
+    router.push({
+      name: "receive",
+    });
+    ElNotification({
+      title: "温馨提示",
+      message: "请您添加一个默认地址后结算！",
+      type: "info",
+    });
+    return;
+  }
 
   const data = {
     payment: totalPrice.value,
@@ -131,10 +145,10 @@ const handlePay = async () => {
   // 1.创建一个新的订单
   const order = await addOrder(data);
   // 关闭 购物车抽屉
-  emit('update:cartValue', false);
+  emit("update:cartValue", false);
   // 2. 导航到订单详情页面
   router.push({
-    name: 'orderDetail',
+    name: "orderDetail",
     params: {
       id: order.id,
     },
@@ -147,7 +161,7 @@ const handlePay = async () => {
 </script>
 
 <style lang="scss" scoped>
-@use '@/styles/var.scss' as *;
+@use "@/styles/var.scss" as *;
 
 :deep(.el-drawer__title) {
   color: $dark;

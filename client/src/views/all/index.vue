@@ -139,6 +139,9 @@ const handleCategoryChange = (newVal) => {
       align-items: center;
     }
   }
+  .left{
+    flex-shrink: 0;
+  }
 }
 
 .fruit-list {
@@ -193,5 +196,8 @@ const handleCategoryChange = (newVal) => {
 
 :deep(.el-radio-button--small) {
   margin: 0 10px;
+}
+:deep(.el-radio-group){
+  row-gap: 10px;
 }
 </style>

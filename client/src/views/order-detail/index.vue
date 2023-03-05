@@ -1,5 +1,5 @@
 <template>
-  <div class="order-detail-container animate__animated animate__slideInUp">
+  <div class="order-detail-container">
     <h1 class="page-name">订单详情</h1>
     <!-- 内容区域 -->
     <div class="content">
@@ -7,6 +7,7 @@
         v-for="item in orderInfo.products"
         :key="item.id"
         :productInfo="item"
+        :overflow="false"
       />
       <el-divider />
       <div class="pay flex">
@@ -25,10 +26,10 @@
         <div class="key">收货信息：</div>
         <div class="val">
           {{ receiveInfo.name }}，{{ receiveInfo.phone }}，{{
-            receiveInfo.province
-          }}&nbsp;{{ receiveInfo.city }}&nbsp;{{ receiveInfo.county }}&nbsp;{{
-            receiveInfo.detailAddress
-          }}
+            map[receiveInfo.province]
+          }}&nbsp;{{ map[receiveInfo.city] }}&nbsp;{{
+            map[receiveInfo.county]
+          }}&nbsp;{{ receiveInfo.detailAddress }}
           <span class="edit" @click="handleEditReceiveInfo"
             >去修改<i class="iconfont icon-arrow-right"></i
           ></span>
@@ -99,13 +100,13 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import { getOrderById, updateOrder, removeOrder } from '@/api/order';
-import { getReceiveById } from '@/api/receive';
-import OrderItem from '../person/order/OrderItem.vue';
-import { formatLocaleTime } from '@/utils/tools';
-import Receive from '@/views/person/receive/index.vue';
+import { ref, reactive } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { getOrderById, updateOrder, removeOrder } from "@/api/order";
+import { getReceiveById } from "@/api/receive";
+import OrderItem from "../person/order/OrderItem.vue";
+import { formatLocaleTime } from "@/utils/tools";
+import Receive from "@/views/person/receive/index.vue";
 
 const route = useRoute();
 const router = useRouter();
@@ -113,6 +114,8 @@ const orderInfo = ref({});
 const receiveInfo = ref({});
 const drawerVisible = ref(false);
 const dialogVisible = ref(false);
+const map = reactive({});
+
 // 根据订单id获取对应的订单信息
 (async () => {
   const result = await getOrderById(route.params.id);
@@ -122,33 +125,42 @@ const dialogVisible = ref(false);
   receiveInfo.value = res;
 })();
 
+// 设置城市数据 键值对映射
+const fetchCityList = async () => {
+  const res = await fetch("https://study.duyiedu.com/api/citylist");
+  const result = await res.json();
+  console.log(result);
+  injectDataToObject(map, result.data);
+};
+fetchCityList();
+
 const mapStatus = (status) => {
   switch (status) {
     case 0:
-      return '已取消';
+      return "已取消";
     case 2:
-      return '待发货';
+      return "待发货";
     case 3:
-      return '已发货';
+      return "已发货";
     case 4:
-      return '交易完成';
+      return "交易完成";
     default:
-      return '待付款';
+      return "待付款";
   }
 };
 
 const mapType = (status) => {
   switch (status) {
     case 0:
-      return 'info';
+      return "info";
     case 2:
-      return 'primary';
+      return "primary";
     case 3:
-      return 'danger';
+      return "danger";
     case 4:
-      return 'success';
+      return "success";
     default:
-      return 'warning';
+      return "warning";
   }
 };
 
@@ -175,11 +187,11 @@ const handleCancelOrder = async () => {
   });
   // 2. 导航到结果页面
   router.push({
-    name: 'result',
+    name: "result",
     state: {
       orderid: route.params.id,
-      title: '已取消',
-      subtitle: '订单已取消，看看其他的吧',
+      title: "已取消",
+      subtitle: "订单已取消，看看其他的吧",
     },
   });
 };
@@ -190,11 +202,11 @@ const handleDeleteOrder = async () => {
   const result = await removeOrder(route.params.id);
   // 2. 导航到结果页面
   router.push({
-    name: 'result',
+    name: "result",
     state: {
       orderid: null,
-      title: '已删除',
-      subtitle: '订单已删除，看看其他的吧',
+      title: "已删除",
+      subtitle: "订单已删除，看看其他的吧",
     },
   });
 };
@@ -211,23 +223,23 @@ const handleConfirmPay = async (type) => {
   const result = await updateOrder(route.params.id, {
     status: 2,
     payType: type,
-    payTime: Date.now() + '',
+    payTime: Date.now() + "",
   });
   // 2. 导航到结果页面
   router.push({
-    name: 'result',
+    name: "result",
     state: {
       orderid: route.params.id,
-      title: '付款成功',
-      subtitle: '订单已付款，看看其他的吧',
+      title: "付款成功",
+      subtitle: "订单已付款，看看其他的吧",
     },
   });
 };
 </script>
 
 <style lang="scss" scoped>
-@use '@/styles/var.scss' as *;
-@import url('//at.alicdn.com/t/c/font_3920335_f53dc4y1i9i.css');
+@use "@/styles/var.scss" as *;
+@import url("//at.alicdn.com/t/c/font_3920335_f53dc4y1i9i.css");
 .order-detail-container {
   margin: 15px 300px;
   color: $dark;

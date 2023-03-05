@@ -7,7 +7,10 @@
     <el-divider />
 
     <p class="paragraph">
-      果“燃”精品水果直供平台是一家以在线销售高品质水果为主营业务的购物平台。该平台提供多样化的水果品种选择，旨在为消费者提供优质、健康的水果购物体验。平台采用前后端分离的技术架构，支持在线下单、支付、配送等全流程服务，同时还提供在线客服、会员积分、优惠券等功能，为用户提供便捷的购物体验。
+      果“燃”精品水果直供平台是一家以在线销售高品质水果为主营业务的购物平台。该平台提供多样化的水果品种选择，旨在为消费者提供优质、健康的水果购物体验。
+    </p>
+    <p class="paragraph">
+      平台采用前后端分离的技术架构，支持在线下单、支付、配送等全流程服务，同时还提供在线客服、会员积分、优惠券等功能，为用户提供便捷的购物体验。
     </p>
     <ol class="paragraph">
       <p>
@@ -35,16 +38,17 @@
 
 <script setup>
 (() => {
-  document.querySelector('.app-container').scrollTo(0, 0);
+  document.querySelector(".app-container").scrollTo(0, 0);
 })();
 </script>
 
 <style lang="scss" scoped>
-@use '@/styles/var.scss' as *;
+@use "@/styles/var.scss" as *;
 .about-container {
   min-height: 100%;
-  margin: 30px 800px 30px 300px;
   color: $dark;
+  width: 1190px;
+  margin: 30px auto;
 }
 .page-title {
   .zh {

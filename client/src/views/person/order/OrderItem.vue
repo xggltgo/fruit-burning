@@ -5,13 +5,15 @@
     </div>
     <div class="desc">
       <div class="tip">
-        <div class="name">{{ productInfo.name }}</div>
+        <div class="name" :class="overflow ? 'overflow' : ''">
+          {{ productInfo.name }}
+        </div>
         <div class="price">&yen;{{ productInfo.price }}</div>
       </div>
       <div class="extra">
         <div class="status">
           <el-tag v-if="productInfo.status" type="danger">{{
-            productInfo.status === 1 ? '热销' : '新品'
+            productInfo.status === 1 ? "热销" : "新品"
           }}</el-tag>
         </div>
         <div class="count">×{{ productInfo.orderDetail?.productCount }}</div>
@@ -31,11 +33,15 @@ defineProps({
     required: true,
     default: () => {},
   },
+  overflow: {
+    type: Boolean,
+    default: true,
+  },
 });
 </script>
 
 <style lang="scss" scoped>
-@use '@/styles/var.scss' as *;
+@use "@/styles/var.scss" as *;
 .order-item-container {
   color: $dark;
   display: flex;
@@ -64,6 +70,12 @@ defineProps({
     .name {
       font-size: 14px;
       font-weight: bold;
+      &.overflow {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 80px;
+      }
     }
     .price {
       font-size: 13px;

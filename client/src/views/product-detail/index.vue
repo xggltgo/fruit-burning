@@ -16,7 +16,7 @@
             <div class="name">
               {{ productInfo.name
               }}<el-tag v-if="productInfo.status" type="danger">{{
-                productInfo.status === 1 ? '热销' : '新品'
+                productInfo.status === 1 ? "热销" : "新品"
               }}</el-tag>
             </div>
             <div class="line"></div>
@@ -52,7 +52,12 @@
               v-for="item in aboutProductList"
               :key="item.id"
             >
-              <Hot :productInfo="item" :imageHeight="185" :marginBottom="0" />
+              <Hot
+                :productInfo="item"
+                :imageHeight="185"
+                :marginBottom="0"
+                :overflow="true"
+              />
             </div>
           </div>
         </div>
@@ -73,6 +78,7 @@
                 :imageHeight="85"
                 :fontSize="12"
                 :marginBottom="0"
+                :overflow="true"
               />
             </div>
           </div>
@@ -83,14 +89,14 @@
 </template>
 
 <script setup>
-import { ref, watchEffect } from 'vue';
-import { useRoute } from 'vue-router';
-import Hot from '@/components/Hot.vue';
-import { useUserStore } from '@/store/user';
-import { useCartStore } from '@/store/cart';
-import { getProductById, getProductByPage } from '@/api/product';
-import { addOneCart } from '@/api/cart';
-import { ElNotification } from 'element-plus';
+import { ref, watchEffect } from "vue";
+import { useRoute } from "vue-router";
+import Hot from "@/components/Hot.vue";
+import { useUserStore } from "@/store/user";
+import { useCartStore } from "@/store/cart";
+import { getProductById, getProductByPage } from "@/api/product";
+import { addOneCart } from "@/api/cart";
+import { ElNotification } from "element-plus";
 
 const userStore = useUserStore();
 const cartStore = useCartStore();
@@ -156,9 +162,9 @@ const handleIncrease = () => {
 const handleAddToCart = async () => {
   if (!userStore.userInfo) {
     ElNotification({
-      title: 'Error',
-      message: '您尚未登录，请登录后重试！',
-      type: 'error',
+      title: "Error",
+      message: "您尚未登录，请登录后重试！",
+      type: "error",
     });
     return;
   }
@@ -177,9 +183,9 @@ const handleAddToCart = async () => {
   };
   const result = await addOneCart(data);
   ElNotification({
-    title: 'Success',
-    message: '成功加入至购物车！',
-    type: 'success',
+    title: "Success",
+    message: "成功加入至购物车！",
+    type: "success",
   });
   disabled.value = false;
   count.value = 1;
@@ -189,9 +195,10 @@ const handleAddToCart = async () => {
 </script>
 
 <style lang="scss" scoped>
-@use '@/styles/var.scss' as *;
+@use "@/styles/var.scss" as *;
 .product-detail-container {
-  margin: 15px 300px;
+  width: 1190px;
+  margin: 0 auto;
   .content {
     margin-top: 10px;
     box-shadow: var(--el-box-shadow-light);
@@ -230,6 +237,9 @@ const handleAddToCart = async () => {
             font-size: 20px;
             color: $dark;
             font-family: å¾®è½¯é›…é»‘;
+            height: 70px;
+            line-height: 35px;
+            width: 350px;
           }
           .line {
             width: 80px;

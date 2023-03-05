@@ -26,6 +26,7 @@
       :style="{
         fontSize: fontSize + 'px',
       }"
+      :class="overflow ? 'overflow' : ''"
       @click="
         router.push({
           name: 'productDetail',
@@ -49,7 +50,7 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
+import { useRouter } from "vue-router";
 
 const router = useRouter();
 
@@ -70,6 +71,10 @@ defineProps({
   marginBottom: {
     type: Number,
     default: 30,
+  },
+  overflow: {
+    type: Boolean,
+    default: false,
   },
 });
 </script>
@@ -100,6 +105,12 @@ defineProps({
     margin-top: 10px;
     color: #999;
     cursor: pointer;
+    &.overflow {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      padding: 0 5px;
+    }
   }
   .price {
     margin-top: 5px;

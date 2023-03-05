@@ -23,8 +23,6 @@
       }"
       :style="{ visibility: use_animate ? 'visible' : 'hidden' }"
     >
-      在专栏设置面板中，您可以更换背景图片的<br />
-      非常简单的，不需要任何别的设置
     </div>
     <button
       class="extra-btn extra animate__animated animate__delay-2s"

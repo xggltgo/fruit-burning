@@ -1,5 +1,5 @@
 <template>
-  <div class="person-container animate__animated animate__slideInUp">
+  <div class="person-container">
     <div class="nav">
       <RouterLink :to="{ name: 'info' }">个人信息</RouterLink>
       <RouterLink :to="{ name: 'order' }">订单信息</RouterLink>
