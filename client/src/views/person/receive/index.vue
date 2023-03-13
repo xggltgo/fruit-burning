@@ -17,11 +17,11 @@
           <div class="left">
             <div>
               {{
-                (map[item.province] || '') +
-                ' ' +
-                (map[item.city] || '') +
-                ' ' +
-                (map[item.county] || '')
+                (map[item.province] || "") +
+                " " +
+                (map[item.city] || "") +
+                " " +
+                (map[item.county] || "")
               }}
             </div>
             <div>
@@ -43,7 +43,10 @@
       </el-collapse-item>
     </el-collapse>
 
-    <el-empty description="暂无收货信息" v-if="receiveStore.receiveList.length === 0" />
+    <el-empty
+      description="暂无收货信息"
+      v-if="receiveStore.receiveList.length === 0"
+    />
 
     <div class="btn">
       <el-button type="primary" @click="handleAdd">添加收货地址</el-button>
@@ -90,13 +93,14 @@
 </template>
 
 <script setup>
-import { ref, computed, reactive } from 'vue';
-import { useRoute } from 'vue-router';
-import { useReceiveStore } from '@/store/receive';
-import { injectDataToObject } from '@/utils/tools';
-import { ElNotification } from 'element-plus';
-import { getReceiveById } from '@/api/receive';
-import { updateOrder } from '@/api/order';
+import { ref, computed, reactive } from "vue";
+import { useRoute } from "vue-router";
+import { getCityList } from "@/api/address";
+import { useReceiveStore } from "@/store/receive";
+import { injectDataToObject } from "@/utils/tools";
+import { ElNotification } from "element-plus";
+import { getReceiveById } from "@/api/receive";
+import { updateOrder } from "@/api/order";
 
 const handleSelectChange = (value) => {
   form.value.province = value[0];
@@ -112,16 +116,14 @@ const dialogVisible = ref(false);
 const activeNames = computed(() => receiveStore.receiveList[0]?.id);
 const form = ref({});
 const isUsing = ref(false);
-const type = ref('update');
+const type = ref("update");
 const emit = defineEmits();
 
 const fetchCityList = async () => {
-  const res = await fetch('https://study.duyiedu.com/api/citylist');
-  const result = await res.json();
-  options.value = result.data;
-  injectDataToObject(map, result.data);
+  const result = await getCityList();
+  options.value = result;
+  injectDataToObject(map, result);
 };
-
 fetchCityList();
 
 const handleClose = (done) => {
@@ -130,6 +132,7 @@ const handleClose = (done) => {
 
 // 编辑收货地址
 const handleEdit = async (receiveInfo) => {
+  type.value = "update";
   form.value = {
     ...receiveInfo,
     value: [receiveInfo.province, receiveInfo.city, receiveInfo.county],
@@ -144,14 +147,14 @@ const handleSubmit = async () => {
   // 发送之前 判断是否已有订单正在使用该地址
   const data = { ...form.value };
   delete data.value;
-  if (type.value === 'update') {
+  if (type.value === "update") {
     if (isUsing.value) {
       dialogVisible.value = false;
       ElNotification({
-        title: '温馨提示',
-        message: '当前已有订单正在使用该地址，请在订单取消或交易成功后重试!',
+        title: "温馨提示",
+        message: "当前已有订单正在使用该地址，请在订单取消或交易成功后重试!",
         duration: 0,
-        type: 'warning',
+        type: "warning",
       });
       return;
     }
@@ -161,16 +164,16 @@ const handleSubmit = async () => {
   }
   dialogVisible.value = false;
   ElNotification({
-    title: 'Success',
-    message: type.value === 'update' ? '收货信息修改成功!' : '添加收货信息成功',
-    type: 'success',
+    title: "Success",
+    message: type.value === "update" ? "收货信息修改成功!" : "添加收货信息成功",
+    type: "success",
   });
 };
 
 // 添加收货信息
 const handleAdd = async () => {
   form.value = {};
-  type.value = 'add';
+  type.value = "add";
   dialogVisible.value = true;
 };
 
@@ -181,24 +184,24 @@ const handleDelete = async (id) => {
   if (isUsing.value) {
     dialogVisible.value = false;
     ElNotification({
-      title: '温馨提示',
-      message: '当前已有订单正在使用该地址，请在订单取消或交易成功后重试!',
+      title: "温馨提示",
+      message: "当前已有订单正在使用该地址，请在订单取消或交易成功后重试!",
       duration: 0,
-      type: 'warning',
+      type: "warning",
     });
     return;
   }
   const result = await receiveStore.removeReceiveInfo(id);
   ElNotification({
-    title: 'Success',
-    message: '删除收货信息成功',
-    type: 'success',
+    title: "Success",
+    message: "删除收货信息成功",
+    type: "success",
   });
 };
 
 // 如果在订单详情页面时，点击title区域可以选中该地址
 const handleChoose = async (receiveid) => {
-  if (route.name !== 'orderDetail') {
+  if (route.name !== "orderDetail") {
     return;
   }
   // 修改对应订单的 receiveid
@@ -206,13 +209,13 @@ const handleChoose = async (receiveid) => {
     receiveid,
   });
   // 通知父组件修改完成
-  emit('receiveDone', result.receiveid);
+  emit("receiveDone", result.receiveid);
 };
 </script>
 
 <style lang="scss" scoped>
-@use '@/styles/var.scss' as *;
-@import url('//at.alicdn.com/t/c/font_3920335_f53dc4y1i9i.css');
+@use "@/styles/var.scss" as *;
+@import url("//at.alicdn.com/t/c/font_3920335_f53dc4y1i9i.css");
 .receive-container {
   color: $dark;
 }
@@ -252,7 +255,7 @@ const handleChoose = async (receiveid) => {
   margin-top: 30px;
 }
 
-:deep(.el-collapse){
+:deep(.el-collapse) {
   width: 250px;
 }
 </style>

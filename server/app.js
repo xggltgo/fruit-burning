@@ -28,6 +28,7 @@ var productRouter = require('./routes/product');
 var cartRouter = require('./routes/cart');
 var ReceiveRouter = require('./routes/receive');
 var orderRouter = require('./routes/order');
+var addressRouter = require('./routes/address');
 
 var app = express();
 
@@ -58,6 +59,7 @@ app.use(
       '/api/category',
       '/api/product',
       '/api/user',
+      '/api/citylist',
       { url: /^\/api\/category\/\d+$/, method: 'GET' },
       { url: /^\/api\/product\/\d+$/, method: 'GET' },
     ],
@@ -74,6 +76,7 @@ app.use('/api/product', productRouter);
 app.use('/api/cart', cartRouter);
 app.use('/api/receive', ReceiveRouter);
 app.use('/api/order', orderRouter);
+app.use('/api/citylist', addressRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

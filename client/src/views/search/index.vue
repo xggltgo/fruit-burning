@@ -7,6 +7,7 @@
         <div class="list-item" v-for="item in searchProductList" :key="item.id">
           <Hot :productInfo="item" :marginBottom="0" />
         </div>
+        <el-empty description="暂无对应商品" v-if="searchProductList.length === 0" />
       </div>
     </div>
     <div class="pager">
@@ -93,5 +94,9 @@ const handlePageChange = (newPage) => {
   margin: 30px auto;
   display: flex;
   justify-content: center;
+}
+
+:deep(.el-empty){
+  margin: 0 auto;
 }
 </style>

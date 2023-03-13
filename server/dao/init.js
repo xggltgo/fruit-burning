@@ -6,6 +6,7 @@ const Category = require('./model/category');
 const Product = require('./model/product');
 const Cart = require('./model/cart');
 const Order = require('./model/order');
+const Address = require('./model/address');
 const Receive = require('./model/receive');
 const OrderDetail = require('./model/orderDetail');
 const { addAdmin } = require('./sql/admin');

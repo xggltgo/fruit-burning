@@ -187,10 +187,10 @@ const handleAddToCart = async () => {
     message: "成功加入至购物车！",
     type: "success",
   });
-  disabled.value = false;
   count.value = 1;
   // 更新购物车仓库信息
-  cartStore.getAllCart();
+  await cartStore.getAllCart();
+  disabled.value = false;
 };
 </script>
 

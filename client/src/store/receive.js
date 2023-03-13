@@ -1,7 +1,7 @@
-import { defineStore } from 'pinia';
-import * as userApi from '../api/receive';
+import { defineStore } from "pinia";
+import * as userApi from "../api/receive";
 
-export const useReceiveStore = defineStore('receive', {
+export const useReceiveStore = defineStore("receive", {
   state: () => ({ receiveList: [] }),
   actions: {
     async getAllReceive() {
@@ -39,9 +39,9 @@ export const useReceiveStore = defineStore('receive', {
       }
       const result = await userApi.addReceive(receiveInfo);
       this.receiveList.push(result);
-      this.receiveList = this.receiveList.sort(
-        (a, b) => b.isDefault - a.isDefault
-      );
+      this.receiveList = this.receiveList.sort((a, b) => {
+        return b.isDefault - a.isDefault;
+      });
     },
     async removeReceiveInfo(id) {
       this.receiveList = this.receiveList.filter((item) => item.id !== id);

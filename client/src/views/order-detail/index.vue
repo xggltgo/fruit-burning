@@ -103,9 +103,10 @@
 import { ref, reactive } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { getOrderById, updateOrder, removeOrder } from "@/api/order";
+import { getCityList } from "@/api/address";
 import { getReceiveById } from "@/api/receive";
 import OrderItem from "../person/order/OrderItem.vue";
-import { formatLocaleTime } from "@/utils/tools";
+import { formatLocaleTime, injectDataToObject } from "@/utils/tools";
 import Receive from "@/views/person/receive/index.vue";
 
 const route = useRoute();
@@ -127,10 +128,8 @@ const map = reactive({});
 
 // 设置城市数据 键值对映射
 const fetchCityList = async () => {
-  const res = await fetch("https://study.duyiedu.com/api/citylist");
-  const result = await res.json();
-  console.log(result);
-  injectDataToObject(map, result.data);
+  const result = await getCityList()
+  injectDataToObject(map, result);
 };
 fetchCityList();
 
