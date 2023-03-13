@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "a7a6a6b7-9899-46d2-a18c-d7efd1202134",
+		"_postman_id": "25edc141-6977-4f67-9fa4-36e6d3b835bf",
 		"name": "fruit-burning",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "21091759"
+		"_exporter_id": "23537416"
 	},
 	"item": [
 		{
@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"loginId\": \"admin1\",\r\n  \"loginPwd\": \"654321\",\r\n  \"captcha\": \"fzgrop\", \r\n  \"remember\": 7 \r\n}",
+							"raw": "{\r\n  \"loginId\": \"admin\",\r\n  \"loginPwd\": \"123456\",\r\n  \"captcha\": \"rxuvxr\", \r\n  \"remember\": 30\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -322,13 +322,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IueuoeeQhuWRmCIsImxvZ2luSWQiOiJhZG1pbiIsImlhdCI6MTY3Nzg2MDk5NiwiZXhwIjoxNjgwNDUyOTk2fQ.onkrBhNd_g47FYKpEiYDu0zIIfW2QAAfXwhJa5urE_A",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"苹果\",\r\n  \"order\": 5\r\n}",
+							"raw": "{\r\n  \"name\": \"蓝莓\",\r\n  \"order\": 4 \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -356,7 +356,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IueuoeeQhuWRmCIsImxvZ2luSWQiOiJhZG1pbiIsImlhdCI6MTY3Nzg2MDk5NiwiZXhwIjoxNjgwNDUyOTk2fQ.onkrBhNd_g47FYKpEiYDu0zIIfW2QAAfXwhJa5urE_A",
 								"type": "text"
 							}
 						],
@@ -382,7 +382,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IueuoeeQhuWRmCIsImxvZ2luSWQiOiJhZG1pbiIsImlhdCI6MTY3Nzg2MDk5NiwiZXhwIjoxNjgwNDUyOTk2fQ.onkrBhNd_g47FYKpEiYDu0zIIfW2QAAfXwhJa5urE_A",
 								"type": "text"
 							}
 						],
@@ -461,13 +461,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IueuoeeQhuWRmCIsImxvZ2luSWQiOiJhZG1pbiIsImlhdCI6MTY3Nzg2MDk5NiwiZXhwIjoxNjgwNDUyOTk2fQ.onkrBhNd_g47FYKpEiYDu0zIIfW2QAAfXwhJa5urE_A",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"眉山苹果新2\",\r\n    \"status\": 2,\r\n    \"price\": 15,\r\n    \"image_sm\": \"/static/upload/raspberry_sm.png\",\r\n    \"image_mid\": \"/static/upload/raspberry_mid.png\",\r\n    \"image_big\": \"/static/upload/raspberry_big.png\",\r\n    \"description\": \"打算肯定不是的厉害还是卡还贷款撒谎打赏等哈善良豁斯空间的噶时光雕刻绝对不可撒v不断加快\",\r\n    \"stock\": 105,\r\n    \"categoryid\": 4\r\n}",
+							"raw": "{\r\n    \"name\": \"柚选橙鲜酸石榴黒籽酸石榴\",\r\n    \"status\": 2,\r\n    \"price\": 21.6,\r\n    \"image_sm\": \"/static/upload/石榴2sm.png\",\r\n    \"image_mid\": \"/static/upload/石榴2mid.png\",\r\n    // \"image_big\": \"/static/upload/raspberry_big.png\",\r\n    \"description\": \"商品描述信息\",\r\n    \"stock\": 55,\r\n    \"categoryid\":5\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -495,13 +495,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IueuoeeQhuWRmCIsImxvZ2luSWQiOiJhZG1pbiIsImlhdCI6MTY3Nzg2MDk5NiwiZXhwIjoxNjgwNDUyOTk2fQ.onkrBhNd_g47FYKpEiYDu0zIIfW2QAAfXwhJa5urE_A",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"成都苹果2\",\r\n    \"status\": null,\r\n    \"price\": 10,\r\n    \"image_sm\": \"image_sm_成都苹果\",\r\n    \"image_mid\": \"image_mid_成都苹果\",\r\n    \"image_big\": \"image_big_成都苹果\",\r\n    \"stock\": 1000,\r\n    \"categoryid\": 7\r\n}",
+							"raw": "{\r\n    \"name\": \"智利蓝莓\",\r\n    \"status\": null,\r\n    \"price\": 10,\r\n    \"image_sm\": \"/static/upload/蓝莓3sm.png\",\r\n    \"image_mid\": \"/static/upload/蓝莓3mid.jpg\",\r\n    // \"image_big\": \"image_big_成都苹果\",\r\n    \"stock\": 1000,\r\n    \"categoryid\": 3\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -530,7 +530,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiLnlKjmiLcxIiwibG9naW5JZCI6ImFkbWluIiwicGhvbmUiOiIxMTExMTExMTExMSIsImF2YXRhciI6Ii9zdGF0aWMvYXZhdGFycy9kZWZhdWx0LnBuZyIsImlhdCI6MTY3NzE2ODcwMSwiZXhwIjoxNjc5NzYwNzAxfQ.BjN_nshdx4nF9p4ctpAfS3VARhkRcsHgtODwrLBaeYs",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IueuoeeQhuWRmCIsImxvZ2luSWQiOiJhZG1pbiIsImlhdCI6MTY3Nzg2MDk5NiwiZXhwIjoxNjgwNDUyOTk2fQ.onkrBhNd_g47FYKpEiYDu0zIIfW2QAAfXwhJa5urE_A",
 								"type": "text"
 							}
 						],
@@ -1077,6 +1077,30 @@
 							"path": [
 								"api",
 								"receive"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "城市数据",
+			"item": [
+				{
+					"name": "获取城市数据",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/citylist",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"citylist"
 							]
 						}
 					},
