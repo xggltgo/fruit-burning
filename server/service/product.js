@@ -29,7 +29,7 @@ async function removeProduct(id) {
 async function modifyProduct(id, productInfo) {
   // 如果修改了商品的分类，则商品原分类count-1，商品新分类count+1
   const { categoryid: originCategoryid } = await selectOneProduct(id);
-  if (originCategoryid !== productInfo.categoryid) {
+  if (originCategoryid !== productInfo.categoryid && originCategoryid) {
     await updateCategoryCount(originCategoryid, -1);
     await updateCategoryCount(productInfo.categoryid, 1);
   }

@@ -72,6 +72,12 @@
           v-if="orderInfo.status === 1"
           >立即支付</el-button
         >
+        <el-button
+          type="success"
+          @click="handleConfirmReceive"
+          v-if="orderInfo.status === 3"
+          >确认收货</el-button
+        >
       </div>
     </div>
 
@@ -100,14 +106,14 @@
 </template>
 
 <script setup>
-import { ref, reactive } from "vue";
-import { useRoute, useRouter } from "vue-router";
-import { getOrderById, updateOrder, removeOrder } from "@/api/order";
-import { getCityList } from "@/api/address";
-import { getReceiveById } from "@/api/receive";
-import OrderItem from "../person/order/OrderItem.vue";
-import { formatLocaleTime, injectDataToObject } from "@/utils/tools";
-import Receive from "@/views/person/receive/index.vue";
+import { ref, reactive } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { getOrderById, updateOrder, removeOrder } from '@/api/order';
+import { getCityList } from '@/api/address';
+import { getReceiveById } from '@/api/receive';
+import OrderItem from '../person/order/OrderItem.vue';
+import { formatLocaleTime, injectDataToObject } from '@/utils/tools';
+import Receive from '@/views/person/receive/index.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -128,7 +134,7 @@ const map = reactive({});
 
 // 设置城市数据 键值对映射
 const fetchCityList = async () => {
-  const result = await getCityList()
+  const result = await getCityList();
   injectDataToObject(map, result);
 };
 fetchCityList();
@@ -136,30 +142,30 @@ fetchCityList();
 const mapStatus = (status) => {
   switch (status) {
     case 0:
-      return "已取消";
+      return '已取消';
     case 2:
-      return "待发货";
+      return '待发货';
     case 3:
-      return "已发货";
+      return '已发货';
     case 4:
-      return "交易完成";
+      return '交易完成';
     default:
-      return "待付款";
+      return '待付款';
   }
 };
 
 const mapType = (status) => {
   switch (status) {
     case 0:
-      return "info";
+      return 'info';
     case 2:
-      return "primary";
+      return 'primary';
     case 3:
-      return "danger";
+      return 'danger';
     case 4:
-      return "success";
+      return 'success';
     default:
-      return "warning";
+      return 'warning';
   }
 };
 
@@ -186,11 +192,11 @@ const handleCancelOrder = async () => {
   });
   // 2. 导航到结果页面
   router.push({
-    name: "result",
+    name: 'result',
     state: {
       orderid: route.params.id,
-      title: "已取消",
-      subtitle: "订单已取消，看看其他的吧",
+      title: '已取消',
+      subtitle: '订单已取消，看看其他的吧',
     },
   });
 };
@@ -201,11 +207,11 @@ const handleDeleteOrder = async () => {
   const result = await removeOrder(route.params.id);
   // 2. 导航到结果页面
   router.push({
-    name: "result",
+    name: 'result',
     state: {
       orderid: null,
-      title: "已删除",
-      subtitle: "订单已删除，看看其他的吧",
+      title: '已删除',
+      subtitle: '订单已删除，看看其他的吧',
     },
   });
 };
@@ -222,23 +228,40 @@ const handleConfirmPay = async (type) => {
   const result = await updateOrder(route.params.id, {
     status: 2,
     payType: type,
-    payTime: Date.now() + "",
+    payTime: Date.now() + '',
   });
   // 2. 导航到结果页面
   router.push({
-    name: "result",
+    name: 'result',
     state: {
       orderid: route.params.id,
-      title: "付款成功",
-      subtitle: "订单已付款，看看其他的吧",
+      title: '付款成功',
+      subtitle: '订单已付款，看看其他的吧',
+    },
+  });
+};
+
+// 确认收货
+const handleConfirmReceive = async () => {
+  const result = await updateOrder(route.params.id, {
+    status: 4,
+    endTime: Date.now() + '',
+  });
+  // 2. 导航到结果页面
+  router.push({
+    name: 'result',
+    state: {
+      orderid: route.params.id,
+      title: '确认收货成功',
+      subtitle: '订单已完成，看看其他的吧',
     },
   });
 };
 </script>
 
 <style lang="scss" scoped>
-@use "@/styles/var.scss" as *;
-@import url("//at.alicdn.com/t/c/font_3920335_f53dc4y1i9i.css");
+@use '@/styles/var.scss' as *;
+@import url('//at.alicdn.com/t/c/font_3920335_f53dc4y1i9i.css');
 .order-detail-container {
   margin: 15px 300px;
   color: $dark;

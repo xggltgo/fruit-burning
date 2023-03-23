@@ -7,9 +7,9 @@ const { ValidationError } = require('../utils/errors');
 
 router.post('/login', async function (req, res, next) {
   // 验证验证码流程
-  if (req.body.captcha.toLowerCase() !== req.session.captcha.toLowerCase()) {
-    throw new ValidationError('验证码错误');
-  }
+  // if (req.body.captcha.toLowerCase() !== req.session.captcha.toLowerCase()) {
+  //   throw new ValidationError('验证码错误');
+  // }
   // 管理员认证流程
   const result = await login(req.body);
   if (result) {
@@ -20,6 +20,8 @@ router.post('/login', async function (req, res, next) {
     // 账号密码错误处理
     // throw new ValidationError('账号或密码错误');
     // res.send(formatResponse(0, '', null));
+    // 账号密码错误处理
+    throw new ValidationError('账号或密码错误');
   }
 });
 

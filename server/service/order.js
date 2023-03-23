@@ -5,6 +5,7 @@ const {
   deleteOrder,
   selectOneOrder,
   selectOrderByUserid,
+  selectAllOrderByPage,
 } = require('../dao/sql/order');
 const {
   createOrderDetail,
@@ -57,10 +58,24 @@ async function getOrderByUserid(userid) {
   return await selectOrderByUserid(userid);
 }
 
+/**
+ * 分页获取订单信息
+ * @param {Object} pageInfo 分页信息
+ * @returns
+ */
+async function getAllOrderByPage(pageInfo) {
+  const { count, rows } = await selectAllOrderByPage(pageInfo);
+  return {
+    total: count,
+    orderList: rows,
+  };
+}
+
 module.exports = {
   addOrder,
   removeOrder,
   modifyOrder,
   getOneOrder,
   getOrderByUserid,
+  getAllOrderByPage,
 };

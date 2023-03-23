@@ -52,7 +52,9 @@ async function selectOneCategory(id) {
  * 从数据库查询所有分类
  */
 async function selectAllCategory() {
-  const result = await Category.findAll();
+  const result = await Category.findAll({
+    order: [['order']],
+  });
   return JSON.parse(JSON.stringify(result));
 }
 

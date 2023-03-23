@@ -14,7 +14,15 @@ export function formatDate(timeStamp) {
 }
 
 export function formatLocaleTime(timeStamp) {
-  return moment(+timeStamp).format('YYYY-MM-DD HH:mm:ss');
+  return moment(+timeStamp).format('YYYY年MM月DD日 HH:mm:ss');
 }
 
-
+export function isfullInfo(info) {
+  for (const key in info) {
+    const ele = info[key];
+    if (!ele && key !== 'createDate' && key !== 'status') {
+      return false;
+    }
+  }
+  return true;
+}

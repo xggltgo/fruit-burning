@@ -1,5 +1,6 @@
 const Order = require('../model/order');
 const Product = require('../model/product');
+const Receive = require('../model/receive');
 const { Op } = require('sequelize');
 
 /**
@@ -85,6 +86,33 @@ async function selectOrderByReceiveid(receiveid) {
   return JSON.parse(JSON.stringify(result));
 }
 
+/**
+ * 分页获取所有订单
+ * @param {Object} param0 {page: number,limit: number}
+ * @returns
+ */
+async function selectAllOrderByPage({ page = 1, limit = 10, status }) {
+  // if (+status) {
+  //   where.status = +status;
+  // }
+  const result = await Order.findAndCountAll({
+    distinct: true,
+    offset: (+page - 1) * +limit,
+    limit: +limit,
+    include: [
+      {
+        model: Product,
+      },
+      {
+        model: Receive,
+      },
+    ],
+    order: [['createTime', 'DESC']],
+  });
+
+  return JSON.parse(JSON.stringify(result));
+}
+
 module.exports = {
   createOrder,
   deleteOrder,
@@ -92,4 +120,5 @@ module.exports = {
   selectOneOrder,
   selectOrderByUserid,
   selectOrderByReceiveid,
+  selectAllOrderByPage,
 };
